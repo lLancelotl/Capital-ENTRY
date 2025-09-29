@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Real Estate Landing</title>
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<style>
+    body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+ /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      border-radius: 40px;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 90%;
+      max-width: 1100px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      z-index: 100;
+    }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #111827;
+      font-weight: 500;
+    }
+    .brand {
+      font-size: 22px;
+      font-weight: 700;
+      color: #f43f1b;
+    }
+    .phone {
+      font-size: 14px;
+      margin-right: 16px;
+    }
+    .btn {
+      background: #f43f1b;
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    /* HERO */
+    .hero {
+      height: 100vh;
+      background: url("https://images.unsplash.com/photo-1560185127-6ed189bf02f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80") 
+                  center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 60px;
+      position: relative;
+      color: #fff;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45); /* Karanlık overlay */
+    }
+    .hero-content {
+      max-width: 550px;
+      position: relative; /* overlay üstünde kalması için */
+      z-index: 1;
+    }
+    .hero-content h1 {
+      font-size: 48px;
+      line-height: 1.1;
+      margin: 10px 0;
+    }
+    .hero-content h1 em {
+      font-family: 'Georgia', serif;
+      font-style: italic;
+      color: #fbbf24;
+    }
+    .hero-content p {
+      margin: 16px 0;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    .features {
+      margin-top: 14px;
+      font-size: 14px;
+    }
+    .features span {
+      margin-right: 12px;
+    }
+    .features span::before {
+      content: "✔ ";
+      color: #f43f1b;
+      font-weight: bold;
+    }
+    /* SEARCH BAR */
+    .search-box {
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      display: flex;
+      gap: 10px;
+      padding: 18px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 1000px;
+      z-index: 2;
+    }
+    .search-box select, .search-box input {
+      flex: 1;
+      padding: 10px 12px;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    .search-box button {
+      background: #f43f1b;
+      color: #fff;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 32px;
+      }
+      .search-box {
+        flex-direction: column;
+        gap: 12px;
+        bottom: -220px;
+      }
+    }
+
+     /* Banner */ .banner { background: #1e1e1e; color: #fff; text-align: center; padding: 80px 20px; border-radius: 20px; margin: 0 auto 50px; width: 90%; max-width: 1300px; position: relative; overflow: hidden; margin-top: 100px;} 
+    .banner h1 { font-size: 64px; margin: 0; }
+     .breadcrumb { margin-top: 15px; font-size: 14px; color: #ddd; } 
+     .breadcrumb a { text-decoration: none; color: #fff; }
+      .breadcrumb a:hover { color: #ff3300; } 
+      .arrow { margin: 0 5px; } /* Arka plan desen */ 
+      banner::before, .banner::after { content: ""; position: absolute; border-radius: 50%; background: rgba(255,255,255,0.05); } 
+      .banner::before { width: 600px; height: 600px; top: -250px; left: -200px; } .banner::after { width: 500px; height: 500px; bottom: -200px; right: -200px; }
+      .about-section { display: flex; align-items: center; justify-content: center; padding: 60px 100px; background: #f5f5f5; } .about-content { max-width: 800px; } .subtitle { color: #ff3300; font-size: 14px; font-weight: bold; margin-bottom: 15px; } .about-content h2 { font-size: 36px; font-weight: 700; margin-bottom: 20px; line-height: 1.3; color: #222; } .about-content h2 em { font-family: 'Georgia', serif; font-style: italic; color: #444; font-weight: normal; } .about-content p { font-size: 16px; color: #666; line-height: 1.7; margin-bottom: 30px; } .about-footer { display: flex; align-items: center; gap: 20px; } .about-footer .btn { background: #ff3300; color: #fff; padding: 12px 25px; border: none; border-radius: 30px; font-weight: bold; cursor: pointer; transition: background 0.3s; } .about-footer .btn:hover { background: #e62e00; } .avatars { display: flex; margin-left: 10px; } .avatars img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #fff; margin-left: -10px; } .rating { display: flex; align-items: center; gap: 5px; font-size: 14px; color: #444; } .stars { color: #ff3300; font-size: 16px; }
+   .services-section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+    }
+
+    .section-header h2 {
+      font-size: 36px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .section-header h2 span {
+      font-family: "Georgia", serif;
+      font-style: italic;
+      font-weight: normal;
+    }
+
+    .section-subtext {
+      max-width: 450px;
+      color: #777;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+
+    .card .icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+      color: #ff4d30;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #000;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .card a {
+      color: #ff4d30;
+      font-size: 14px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    .card-number {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 40px;
+      font-weight: bold;
+      color: #eee;
+      z-index: 0;
+    }
+
+
+    .process-section {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 50px 30px;
+      background: #1a1a1a;
+      border-radius: 15px;
+    }
+
+    .process-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .process-header p {
+      color: #ff4d30;
+      font-size: 14px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .process-header h2 {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 10px 0 0;
+      color: #fff;
+    }
+
+    .process-header h2 span {
+      font-family: "Georgia", serif;
+      font-style: italic;
+      font-weight: normal;
+    }
+
+    .process-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .step-card {
+      background: #2a2a2a;
+      padding: 20px;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .step-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+
+    .step-label {
+      background: #ff4d30;
+      color: #fff;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 5px 12px;
+      border-radius: 5px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .step-number {
+      float: right;
+      color: #eee;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .step-card h3 {
+      font-size: 18px;
+      margin: 10px 0;
+      color: #fff;
+    }
+
+    .step-card p {
+      font-size: 14px;
+      color: #bbb;
+      line-height: 1.5;
+    }
+
+    .process-video {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .process-video img {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+    }
+
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #ff4d30;
+      color: #fff;
+      font-size: 24px;
+      padding: 15px 18px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .play-button:hover {
+      background: #e63e24;
+    }
+
+  .faq-section {
+      max-width: 1200px;
+      margin: 50px auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .faq-image {
+      position: relative;
+    }
+
+    .faq-image img {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+    }
+
+    .contact-btn {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: #ff4d30;
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .contact-btn:hover {
+      background: #e63e24;
+    }
+
+    .faq-content p.section-label {
+      color: #ff4d30;
+      font-size: 14px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .faq-content h2 {
+      font-size: 32px;
+      margin: 10px 0 30px;
+      font-weight: bold;
+    }
+
+    .faq-content h2 span {
+      font-family: "Georgia", serif;
+      font-style: italic;
+      font-weight: normal;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid #ddd;
+      padding: 15px 0;
+    }
+
+    .accordion-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .accordion-header.active {
+      color: #ff4d30;
+    }
+
+    .accordion-header span {
+      font-size: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .accordion-header.active span {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 10px 0;
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .accordion-content.show {
+      display: block;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="brand">Capital ENTRY</div>
+    <div style="display:flex;align-items:center;">
+      <span class="phone">+30 697 062 1896</span>
+      <button class="btn">Get Started</button>
+    </div>
+  </div>
+<!-- Banner --> <div class="banner"> <h1>Services</h1> <div class="breadcrumb"> <a href="#">Home</a> <span class="arrow">→</span> <span>About</span> </div> </div>
+
+  <section class="services-section">
+    <div class="section-header">
+      <div>
+        <p style="color:#ff4d30; font-weight:bold; font-size:14px;">01/ OUR SERVICES</p>
+        <h2>Comprehensive real estate <br> <span>solutions tailored</span> for you.</h2>
+      </div>
+      <div class="section-subtext">
+        Explore our wide range of professional real estate manage properties with complete confidence.
+      </div>
+    </div>
+
+    <div class="cards">
+      <!-- CARD 1 -->
+      <div class="card">
+        <div class="icon">🏠</div>
+        <h3>Property buying</h3>
+        <p>Find your dream home with our init expert buying tailored to your preferences and budget</p>
+        <a href="#">Learn More →</a>
+        <div class="card-number">01</div>
+      </div>
+      <!-- CARD 2 -->
+      <div class="card">
+        <div class="icon">📉</div>
+        <h3>Property selling</h3>
+        <p>Sell your property faster and get the best price with proven marketing and sales strategies.</p>
+        <a href="#">Learn More →</a>
+        <div class="card-number">02</div>
+      </div>
+      <!-- CARD 3 -->
+      <div class="card">
+        <div class="icon">🏘️</div>
+        <h3>Property renting</h3>
+        <p>Discover rental properties or list your home with ease using our complete rental solutions.</p>
+        <a href="#">Learn More →</a>
+        <div class="card-number">03</div>
+      </div>
+      <!-- CARD 4 -->
+      <div class="card">
+        <div class="icon">🛠️</div>
+        <h3>Property management</h3>
+        <p>Let us manage your investment properties with professional care and maintenance screening.</p>
+        <a href="#">Learn More →</a>
+        <div class="card-number">04</div>
+      </div>
+      <!-- CARD 5 -->
+      <div class="card">
+        <div class="icon">📑</div>
+        <h3>Legal & Documentation Help</h3>
+        <p>Let us assist with legal processes and paperwork to secure your property transactions.</p>
+        <a href="#">Learn More →</a>
+        <div class="card-number">05</div>
+      </div>
+      <!-- CARD 6 -->
+      <div class="card">
+        <div class="icon">🏦</div>
+        <h3>Property Buying Assistance</h3>
+        <p>We help you make the right investment decisions with our expert advisory services.</p>
+        <a href="#">Learn More →</a>
+        <div class="card-number">06</div>
+      </div>
+    </div>
+  </section>
+ 
+  
+  <section class="process-section">
+    <div class="process-header">
+      <p>02/ OUR PROCESS</p>
+      <h2>How we <span>help you</span> find your dream home</h2>
+    </div>
+
+    <div class="process-content">
+      <div class="process-steps">
+        <!-- Step 1 -->
+        <div class="step-card">
+          <div class="step-label">Step <span class="step-number">01</span></div>
+          <h3>Initial Consultation</h3>
+          <p>We listen to your needs and good fill preferences to do.</p>
+        </div>
+        <!-- Step 2 -->
+        <div class="step-card">
+          <div class="step-label">Step <span class="step-number">02</span></div>
+          <h3>Property Search</h3>
+          <p>We listen to your needs and good fill preferences to do.</p>
+        </div>
+        <!-- Step 3 -->
+        <div class="step-card">
+          <div class="step-label">Step <span class="step-number">03</span></div>
+          <h3>Site Visits</h3>
+          <p>We listen to your needs and good fill preferences to do.</p>
+        </div>
+        <!-- Step 4 -->
+        <div class="step-card">
+          <div class="step-label">Step <span class="step-number">04</span></div>
+          <h3>Negotiation Support</h3>
+          <p>We listen to your needs and good fill preferences to do.</p>
+        </div>
+      </div>
+
+      <div class="process-video">
+        <img src="/Users/Burak/Desktop/Burak Güzel/Örnek Web Siteleri/Mustafa Yiğit/Resimler/11.jpg" alt="Process Video">
+        <div class="play-button">▶</div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="faq-section">
+    <!-- Left Image -->
+    <div class="faq-image">
+      <img src="/Users/Burak/Desktop/Burak Güzel/Örnek Web Siteleri/Mustafa Yiğit/Resimler/12.jpg" alt="FAQ Image">
+      <button class="contact-btn">Contact Us</button>
+    </div>
+
+    <!-- Right Content -->
+    <div class="faq-content">
+      <p class="section-label">03/ COMMON QUESTIONS</p>
+      <h2>Answers to your most frequently <br> asked <span>real estate</span> questions</h2>
+
+      <!-- Accordion -->
+      <div class="accordion">
+        <!-- First Item (Open by default) -->
+        <div class="accordion-item">
+          <div class="accordion-header active">
+            <span>How do I start buying a property with Omahe?</span>
+            <span>−</span>
+          </div>
+          <div class="accordion-content show">
+            You’ll need a valid ID, tax ID (NPWP), proof of income, and bank statements. 
+            Specific documents may vary depending on the property and region.
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>Are there any hidden costs during the process?</span>
+            <span>+</span>
+          </div>
+          <div class="accordion-content">
+            No hidden costs, everything will be clearly explained during consultation.
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>Can I buy a property without visiting the location?</span>
+            <span>+</span>
+          </div>
+          <div class="accordion-content">
+            Yes, we offer virtual tours and detailed property information online.
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>How long does the buying process usually take?</span>
+            <span>+</span>
+          </div>
+          <div class="accordion-content">
+            The process usually takes between 1 to 3 months depending on the property.
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>Can Omahe help with home loans or financing?</span>
+            <span>+</span>
+          </div>
+          <div class="accordion-content">
+            Yes, we work with trusted banks and institutions for financing options.
+          </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>Is legal assistance included in every transaction?</span>
+            <span>+</span>
+          </div>
+          <div class="accordion-content">
+            Yes, our package includes legal consultation and documentation support.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Accordion Toggle
+    const headers = document.querySelectorAll(".accordion-header");
+
+    headers.forEach(header => {
+      header.addEventListener("click", () => {
+        const currentlyActive = document.querySelector(".accordion-header.active");
+        if (currentlyActive && currentlyActive !== header) {
+          currentlyActive.classList.remove("active");
+          currentlyActive.nextElementSibling.classList.remove("show");
+          currentlyActive.querySelector("span:last-child").textContent = "+";
+        }
+
+        header.classList.toggle("active");
+        header.nextElementSibling.classList.toggle("show");
+        const icon = header.querySelector("span:last-child");
+        icon.textContent = header.classList.contains("active") ? "−" : "+";
+      });
+    });
+  </script>
+
+  
+<!-- Footer Section -->
+<footer class="footer">
+  <!-- Call to Action -->
+  <div class="cta-box">
+    <div class="cta-text">
+      <small>08/ LET'S TALK</small>
+      <h2>Start your <em>property journey</em> with Omahe today</h2>
+      <div class="cta-buttons">
+        <a href="#" class="btn-primary">Contact Us Now</a>
+        <a href="#" class="btn-outline">Browse Listings</a>
+      </div>
+    </div>
+    <div class="cta-contact">
+      <p><span>📞</span> Call Us <br> <strong>+1 (555) 123-4567</strong></p>
+      <p><span>✉️</span> Email Us <br> <strong>hello@omahe.com</strong></p>
+    </div>
+  </div>
+
+  <!-- Footer Links -->
+  <div class="footer-links">
+    <div class="column">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Property Listings</a></li>
+        <li><a href="#">Our Team</a></li>
+        <li><a href="#">Career <span class="badge hire">Hiring!</span></a></li>
+      </ul>
+    </div>
+    <div class="column">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Property Buying</a></li>
+        <li><a href="#">Property Management <span class="badge new">New!</span></a></li>
+        <li><a href="#">Property Selling</a></li>
+        <li><a href="#">Property Renting</a></li>
+      </ul>
+    </div>
+    <div class="column">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="#">Blog / Articles</a></li>
+        <li><a href="#">Detail Guides</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Help Center</a></li>
+      </ul>
+    </div>
+    <div class="column">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="#">Instagram</a> <a href="#">Twitter</a></li>
+        <li><a href="#">Tiktok</a> <a href="#">Facebook</a></li>
+        <li><a href="#">LinkedIn</a> <a href="#">Youtube</a></li>
+      </ul>
+    </div>
+    <div class="column">
+      <h4>Resources</h4>
+      <ul>
+        <li>📧 hello@omahe.com</li>
+        <li>📞 +1 (800) 123-4567</li>
+        <li>📍 123 Growth Street, San Francisco, CA</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Bottom -->
+  <div class="footer-bottom">
+    <p>© 2025 <span class="brand">Omahe</span>. All rights reserved.</p>
+    <div class="footer-nav">
+      <a href="#">Terms & Conditions</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Sitemap</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+
+    body {
+ font-family: 'Segoe UI', Arial, sans-serif;
+}
+.footer {
+  background: #111;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  padding: 60px 80px;
+}
+.cta-box {
+  background: #f43f1b;
+  border-radius: 16px;
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 60px;
+}
+.cta-text small {
+  font-size: 14px;
+  font-weight: 600;
+}
+.cta-text h2 {
+  font-size: 28px;
+  margin: 15px 0;
+}
+.cta-text em {
+  font-family: Georgia, serif;
+  font-style: italic;
+}
+.cta-buttons {
+  margin-top: 20px;
+}
+.btn-primary {
+  background: #fff;
+  color: #f43f1b;
+  padding: 12px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  margin-right: 10px;
+  font-weight: bold;
+}
+.btn-outline {
+  border: 2px solid #fff;
+  padding: 10px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: #fff;
+}
+.cta-contact p {
+  margin: 10px 0;
+  font-size: 14px;
+}
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.footer-links h4 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-links ul li {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+.footer-links a {
+  color: #ddd;
+  text-decoration: none;
+}
+.footer-links a:hover {
+  color: #fff;
+}
+.badge {
+  font-size: 11px;
+  padding: 3px 6px;
+  border-radius: 10px;
+  margin-left: 6px;
+}
+.badge.hire {
+  background: #f43f1b;
+  color: #fff;
+}
+.badge.new {
+  background: #00c853;
+  color: #fff;
+}
+.footer-bottom {
+  border-top: 1px solid #333;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+.footer-bottom .brand {
+  color: #f43f1b;
+}
+.footer-nav a {
+  margin-left: 20px;
+  color: #bbb;
+  text-decoration: none;
+}
+.footer-nav a:hover {
+  color: #fff;
+}
+</style>
+  
+</html>
